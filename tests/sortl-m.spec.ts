@@ -31,11 +31,11 @@ test("correct sorted ascending price before discount", async ({ page }) => {
       if (prices[1]) {
         prices[0] = prices[1];
       }
-      if (min > parseInt(prices[0])) {
+      if (min > parseInt(prices[0].replace(/,/g, ""))) {
         check = false;
         break;
       }
-      min = parseInt(prices[0]);
+      min = parseInt(prices[0].replace(/,/g, ""));
     }
   }
   const expectedCorrectSorted = true;
@@ -69,11 +69,11 @@ test("correct sorted ascending price after discount", async ({ page }) => {
       prices.push(match[1]);
     }
     if (prices[0]) {
-      if (min > parseInt(prices[0])) {
+      if (min > parseInt(prices[0].replace(/,/g, ""))) {
         check = false;
         break;
       }
-      min = parseInt(prices[0]);
+      min = parseInt(prices[0].replace(/,/g, ""));
     }
   }
   const expectedCorrectSorted = true;

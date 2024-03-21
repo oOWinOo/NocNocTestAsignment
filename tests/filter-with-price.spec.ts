@@ -37,7 +37,7 @@ test("should have correct filter the price before discount", async ({
     }
     if (prices[0]) {
       console.log(prices[0]);
-      if (min > parseInt(prices[0]) || max < parseInt(prices[0])) {
+      if (min > parseInt(prices[0].replace(/,/g, "")) || max < parseInt(prices[0].replace(/,/g, ""))) {
         check = false;
         break;
       }
@@ -88,11 +88,11 @@ test("should have correct filter the price after discount", async ({
         prices[0] = prices[1];
       }
       console.log(prices[0]);
-      if (min > parseInt(prices[0]) || max < parseInt(prices[0])) {
+      if (min > parseInt(prices[0].replace(/,/g, "")) || max < parseInt(prices[0].replace(/,/g, ""))) {
         check = false;
         break;
       }
-      min = parseInt(prices[0]);
+
     }
   }
   const expectedCorrectFiltered = true;

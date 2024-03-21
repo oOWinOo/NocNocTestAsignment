@@ -33,12 +33,12 @@ test("correct sorted descending price before discount", async ({ page }) => {
         prices[0] = prices[1];
       }
       if (max == -1) {
-        max = parseInt(prices[0]);
-      } else if (max < parseInt(prices[0])) {
+        max = parseInt(prices[0].replace(/,/g, ""));
+      } else if (max < parseInt(prices[0].replace(/,/g, ""))) {
         check = false;
         break;
       }
-      max = parseInt(prices[0]);
+      max = parseInt(prices[0].replace(/,/g, ""));
     }
   }
   const expectedCorrectSorted = true;
@@ -72,14 +72,14 @@ test("correct sorted descending price after discount", async ({ page }) => {
       prices.push(match[1]);
     }
     console.log(prices);
-    if (prices[0]) {
+    if (prices[0].replace(/,/g, "")) {
       if (max == -1) {
-        max = parseInt(prices[0]);
-      } else if (max < parseInt(prices[0])) {
+        max = parseInt(prices[0].replace(/,/g, ""));
+      } else if (max < parseInt(prices[0].replace(/,/g, ""))) {
         check = false;
         break;
       }
-      max = parseInt(prices[0]);
+      max = parseInt(prices[0].replace(/,/g, ""));
     }
   }
   const expectedCorrectSorted = true;
